@@ -19,10 +19,10 @@ class CandidateController extends CommonController
     public function index(Request $request)
     {
     	if ($request->location) {
-    		$candidates = Candidate::where('location',$request->location)->paginate(2);
+    		$candidates = Candidate::where('location',$request->location)->get();
     	}
         else {
-        	$candidates = Candidate::paginate(2);
+        	$candidates = Candidate::all();
         }
     
         return $this->sendResponse(
